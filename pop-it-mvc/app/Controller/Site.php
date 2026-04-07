@@ -3,15 +3,20 @@
 namespace Controller;
 
 use Model\Post;
+use Src\Request;
 use Src\View;
 
 class Site
 {
-    public function index(): string
+    public function index(Request $request): string
     {
-        $posts = Post::all();
+        $id = $request->get('id');
+
+        $posts = $id ? Post::where('id', $id)->get() : Post::all();
+
         return (new View())->render('site.post', ['posts' => $posts]);
     }
+
 
     public function hello(): string
     {
