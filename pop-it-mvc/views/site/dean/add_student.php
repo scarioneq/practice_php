@@ -2,8 +2,8 @@
 
 <form method="POST" style="max-width: 600px; display: flex; flex-direction: column; gap: 15px;">
 
-    <fieldset style="padding: 15px; border: 1px solid #ccc;">
-        <legend><b>Личные данные</b></legend>
+    <fieldset>
+        <legend>Личные данные</legend>
 
         <label>Фамилия: <br>
             <input type="text" name="last_name" required style="width: 100%;">
@@ -31,8 +31,8 @@
         </div>
     </fieldset>
 
-    <fieldset style="padding: 15px; border: 1px solid #ccc;">
-        <legend><b>Обучение</b></legend>
+    <fieldset>
+        <legend>Обучение</legend>
         <label>Группа: <br>
             <select name="group_of_students_id" required style="width: 100%;">
                 <option value="">-- Выберите группу --</option>
@@ -43,8 +43,8 @@
         </label>
     </fieldset>
 
-    <fieldset style="padding: 15px; border: 1px solid #ccc;">
-        <legend><b>Адрес регистрации</b></legend>
+    <fieldset>
+        <legend>Адрес регистрации</legend>
 
         <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 10px;">
             <label>Почтовый индекс: <br>
@@ -70,9 +70,7 @@
     </fieldset>
 
     <div style="margin-top: 10px;">
-        <button type="submit" style="padding: 10px 20px; background: #28a745; color: white; border: none; cursor: pointer;">
-            Сохранить студента
-        </button>
-        <a href="<?= app()->route->getUrl('/hello') ?>" style="margin-left: 10px;">Отмена</a>
+        <button type="submit">Сохранить студента</button>
+        <a href="<?= app()->route->getUrl('/students') ?>" style="margin-left: 10px;">Отмена</a>
     </div>
 </form>

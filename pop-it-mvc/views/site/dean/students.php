@@ -1,52 +1,42 @@
 <h2>Список студентов</h2>
 
 <?php if (isset($message)): ?>
-    <p style="color: green;"><?= $message ?></p>
+    <p style="color: #27ae60; font-weight: bold;"><?= $message ?></p>
 <?php endif; ?>
 
-<table border="1" style="width: 100%; border-collapse: collapse; text-align: left;">
+<table>
     <thead>
-    <tr style="background-color: #f2f2f2;">
-        <th style="padding: 10px;">ID</th>
-        <th style="padding: 10px;">ФИО</th>
-        <th style="padding: 10px;">Пол</th>
-        <th style="padding: 10px;">Дата рождения</th>
-        <th style="padding: 10px;">Группа</th>
-        <th style="padding: 10px;">Город</th>
-        <th style="padding: 10px;">Действия</th>
+    <tr>
+        <th>ID</th>
+        <th>ФИО</th>
+        <th>Пол</th>
+        <th>Дата рождения</th>
+        <th>Группа</th>
+        <th>Город</th>
+        <th>Действия</th>
     </tr>
     </thead>
     <tbody>
     <?php foreach ($students as $student): ?>
         <tr>
-            <td style="padding: 10px;"><?= $student->id ?></td>
-            <td style="padding: 10px;">
-                <?= htmlspecialchars($student->last_name . ' ' . $student->first_name . ' ' . $student->patronymic) ?>
-            </td>
-            <td style="padding: 10px;">
-                <?= $student->gender === 'male' ? 'М' : 'Ж' ?>
-            </td>
-            <td style="padding: 10px;">
-                <?= date('d.m.Y', strtotime($student->date_of_birth)) ?>
-            </td>
-            <td style="padding: 10px;">
-                <?= $student->group ? htmlspecialchars($student->group->name) : '—' ?>
-            </td>
-            <td style="padding: 10px;">
-                <?= $student->address ? htmlspecialchars($student->address->city) : '—' ?>
-            </td>
-            <td style="padding: 10px;">
+            <td><?= $student->id ?></td>
+            <td><?= htmlspecialchars($student->last_name . ' ' . $student->first_name . ' ' . $student->patronymic) ?></td>
+            <td><?= $student->gender === 'male' ? 'М' : 'Ж' ?></td>
+            <td><?= date('d.m.Y', strtotime($student->date_of_birth)) ?></td>
+            <td><?= $student->group ? htmlspecialchars($student->group->name) : '—' ?></td>
+            <td><?= $student->address ? htmlspecialchars($student->address->city) : '—' ?></td>
+            <td>
                 <a href="<?= app()->route->getUrl('/student-disciplines') ?>?id=<?= $student->id ?>"
-                   style="color: green; text-decoration: none; margin-right: 10px;">
+                   style="color: #27ae60; margin-right: 10px;">
                     [ Дисциплины ]
                 </a>
                 <a href="<?= app()->route->getUrl('/edit-student') ?>?id=<?= $student->id ?>"
-                   style="color: blue; text-decoration: none; margin-right: 10px;">
+                   style="color: #2980b9; margin-right: 10px;">
                     [ Редактировать ]
                 </a>
                 <a href="<?= app()->route->getUrl('/delete-student') ?>?id=<?= $student->id ?>"
                    onclick="return confirm('Вы точно хотите удалить этого студента?')"
-                   style="color: red; text-decoration: none;">
+                   style="color: #e74c3c;">
                     [ Удалить ]
                 </a>
             </td>

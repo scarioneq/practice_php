@@ -1,39 +1,37 @@
 <h2>Список групп</h2>
 
-<table border="1" style="width: 100%; border-collapse: collapse; text-align: left;">
+<table>
     <thead>
-    <tr style="background-color: #f2f2f2;">
-        <th style="padding: 10px;">ID</th>
-        <th style="padding: 10px;">Название группы</th>
-        <th style="padding: 10px;">Количество студентов</th>
-        <th style="padding: 10px;">Действия</th>
+    <tr>
+        <th>ID</th>
+        <th>Название группы</th>
+        <th>Количество студентов</th>
+        <th>Действия</th>
     </tr>
     </thead>
     <tbody>
     <?php foreach ($groups as $group): ?>
         <tr>
-            <td style="padding: 10px;"><?= $group->id ?></td>
-            <td style="padding: 10px;">
+            <td><?= $group->id ?></td>
+            <td>
                 <a href="<?= app()->route->getUrl('/group-detail') ?>?id=<?= $group->id ?>"
-                   style="color: navy; text-decoration: none; font-weight: bold;">
+                   style="color: #2c3e50; font-weight: 600; text-decoration: none;">
                     <?= htmlspecialchars($group->name) ?>
                 </a>
             </td>
-            <td style="padding: 10px;">
-                <?= $group->students->count() ?>
-            </td>
-            <td style="padding: 10px;">
+            <td><?= $group->students->count() ?></td>
+            <td>
                 <a href="<?= app()->route->getUrl('/group-detail') ?>?id=<?= $group->id ?>"
-                   style="color: green; text-decoration: none; margin-right: 10px;">
+                   style="color: #27ae60; margin-right: 10px;">
                     [ Просмотр ]
                 </a>
                 <a href="<?= app()->route->getUrl('/edit-group') ?>?id=<?= $group->id ?>"
-                   style="color: blue; text-decoration: none; margin-right: 10px;">
+                   style="color: #2980b9; margin-right: 10px;">
                     [ Редактировать ]
                 </a>
                 <a href="<?= app()->route->getUrl('/delete-group') ?>?id=<?= $group->id ?>"
                    onclick="return confirm('Вы точно хотите удалить эту группу?')"
-                   style="color: red; text-decoration: none;">
+                   style="color: #e74c3c;">
                     [ Удалить ]
                 </a>
             </td>

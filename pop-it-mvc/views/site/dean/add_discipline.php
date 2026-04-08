@@ -6,9 +6,7 @@
     </label>
 
     <div style="margin-top: 10px;">
-        <button type="submit" style="padding: 10px 20px; background: #28a745; color: white; border: none; cursor: pointer;">
-            Создать дисциплину
-        </button>
+        <button type="submit">Создать дисциплину</button>
         <a href="<?= app()->route->getUrl('/disciplines') ?>" style="margin-left: 10px;">Отмена</a>
     </div>
 </form>

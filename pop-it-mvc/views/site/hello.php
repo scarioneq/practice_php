@@ -5,26 +5,26 @@
         <h3>Панель управления деканата</h3>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
 
-            <div style="border: 1px solid #ccc; padding: 10px;">
-                <h4>Студенты</h4>
+            <div style="border: 1px solid #ddd; padding: 16px; border-radius: 6px; background: #fafbfc;">
+                <h4 style="margin-top:0;">Студенты</h4>
                 <a href="<?= app()->route->getUrl('/students') ?>">📋 Все студенты</a><br>
                 <a href="<?= app()->route->getUrl('/add-student') ?>">[+] Добавить студента</a>
             </div>
 
-            <div style="border: 1px solid #ccc; padding: 10px;">
-                <h4>Группы</h4>
+            <div style="border: 1px solid #ddd; padding: 16px; border-radius: 6px; background: #fafbfc;">
+                <h4 style="margin-top:0;">Группы</h4>
                 <a href="<?= app()->route->getUrl('/groups') ?>">📋 Все группы</a><br>
                 <a href="<?= app()->route->getUrl('/add-group') ?>">[+] Добавить группу</a>
             </div>
 
-            <div style="border: 1px solid #ccc; padding: 10px;">
-                <h4>Дисциплины</h4>
+            <div style="border: 1px solid #ddd; padding: 16px; border-radius: 6px; background: #fafbfc;">
+                <h4 style="margin-top:0;">Дисциплины</h4>
                 <a href="<?= app()->route->getUrl('/disciplines') ?>">📋 Все дисциплины</a><br>
                 <a href="<?= app()->route->getUrl('/add-discipline') ?>">[+] Добавить дисциплину</a>
             </div>
 
-            <div style="border: 1px solid #ccc; padding: 10px;">
-                <h4>Учебный план</h4>
+            <div style="border: 1px solid #ddd; padding: 16px; border-radius: 6px; background: #fafbfc;">
+                <h4 style="margin-top:0;">Учебный план</h4>
                 <a href="<?= app()->route->getUrl('/connect-group-discipline') ?>">🔗 Связать группу и дисциплину</a>
             </div>
 
