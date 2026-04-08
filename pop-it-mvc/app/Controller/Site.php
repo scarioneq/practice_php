@@ -21,7 +21,7 @@ class Site
 
     public function hello(): string
     {
-        return new View('site.hello', ['message' => 'hello working']);
+        return new View('site.hello', ['message' => 'Главная страница']);
     }
 
     public function signup(Request $request): string
@@ -52,4 +52,7 @@ class Site
         Auth::logout();
         app()->route->redirect('/hello');
     }
+
+
+
 }

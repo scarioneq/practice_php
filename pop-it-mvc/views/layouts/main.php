@@ -18,7 +18,10 @@
             <a href="<?= app()->route->getUrl('/signup') ?>">Регистрация</a>
         <?php
         else:
-            ?>
+            if (app()->auth::user()->is_admin): ?>
+                <a href="<?= app()->route->getUrl('/users') ?>">Все пользователи</a>
+            <?php endif; ?>
+
             <a href="<?= app()->route->getUrl('/logout') ?>">Выход (<?= app()->auth::user()->name ?>)</a>
         <?php
         endif;
