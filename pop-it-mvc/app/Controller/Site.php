@@ -28,7 +28,7 @@ class Site
     {
         if ($request->method === 'POST' && User::create($request->all())) {
             Auth::attempt($request->all());
-            app()->route->redirect('/go');
+            app()->route->redirect('/');
         }
         return new View('site.signup');
     }

@@ -7,12 +7,16 @@ use Model\Discipline;
 use Model\Group;
 use Model\Student;
 use Src\Request;
-use Model\Post;
 use Model\User;
 use Src\Auth\Auth;
 use Src\View;
 
 class EmployeeDean {
+    public function allStudents()
+    {
+
+    }
+
     public function addStudent(Request $request): string
     {
         if ($request->method === 'POST') {
@@ -30,7 +34,7 @@ class EmployeeDean {
             $studentData['registration_address_id'] = $address->id;
 
             if (Student::create($studentData)) {
-                app()->route->redirect('/hello');
+                app()->route->redirect('/');
             }
         }
 

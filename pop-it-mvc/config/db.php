@@ -2,10 +2,10 @@
 
 return [
     'driver' => 'mysql',
-    'host' => 'localhost',
-    'database' => 'nkfbyvnk_m1',
-    'username' => 'nkfbyvnk',
-    'password' => 'mhgftH',
+    'host' => 'db',
+    'database' => 'db',
+    'username' => 'root',
+    'password' => 'QWEasd123!',
     'charset' => 'utf8',
     'collation' => 'utf8_unicode_ci',
     'prefix' => '',
