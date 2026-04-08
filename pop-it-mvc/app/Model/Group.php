@@ -11,4 +11,9 @@ class Group extends Model {
     public function disciplines() {
         return $this->belongsToMany(Discipline::class, 'group_disciplines', 'group_of_students_id', 'discipline_id');
     }
+
+    // Связь с студентами
+    public function students() {
+        return $this->hasMany(Student::class, 'group_of_students_id');
+    }
 }

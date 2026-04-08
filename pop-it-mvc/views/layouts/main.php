@@ -19,7 +19,7 @@
         <?php
         else:
             if (app()->auth::user()->is_admin): ?>
-                <a href="<?= app()->route->getUrl('/users') ?>">Все пользователи</a>
+                <a href="<?= app()->route->getUrl('/users') ?>">Сотрудники деканата</a>
             <?php endif; ?>
 
             <a href="<?= app()->route->getUrl('/logout') ?>">Выход (<?= app()->auth::user()->name ?>)</a>

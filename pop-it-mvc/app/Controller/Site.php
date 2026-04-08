@@ -2,7 +2,6 @@
 
 namespace Controller;
 
-use Model\Post;
 use Model\User;
 use Src\Auth\Auth;
 use Src\Request;
@@ -10,16 +9,7 @@ use Src\View;
 
 class Site
 {
-    public function index(Request $request): string
-    {
-        $id = $request->get('id');
-
-        $posts = $id ? Post::where('id', $id)->get() : Post::all();
-
-        return (new View())->render('site.post', ['posts' => $posts]);
-    }
-
-    public function hello(): string
+    public function index(): string
     {
         return new View('site.hello', ['message' => 'Главная страница']);
     }
