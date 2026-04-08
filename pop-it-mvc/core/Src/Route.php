@@ -27,6 +27,7 @@ class Route
         $path = substr($path, strlen(self::$prefix) + 1);
 
         if (!array_key_exists($path, self::$routes)) {
+            var_dump($path);
             throw new Error('This path does not exist');
         }
 
