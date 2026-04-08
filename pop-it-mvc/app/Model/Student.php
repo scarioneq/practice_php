@@ -18,4 +18,12 @@ class Student extends Model {
     public function address() {
         return $this->belongsTo(Address::class, 'registration_address_id');
     }
+
+    // Дисциплины студента (через его группу)
+    public function getDisciplinesAttribute() {
+        if (!$this->group_of_students_id || !$this->group) {
+            return collect();
+        }
+        return $this->group->disciplines;
+    }
 }

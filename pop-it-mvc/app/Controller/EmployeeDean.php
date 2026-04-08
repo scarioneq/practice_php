@@ -18,6 +18,12 @@ class EmployeeDean {
         return new View('site.dean.students', ['students' => $students]);
     }
 
+    public function studentDisciplines(Request $request): string
+    {
+        $student = Student::with(['group'])->find($request->get('id'));
+        return new View('site.dean.student_disciplines', ['student' => $student]);
+    }
+
     public function addStudent(Request $request): string
     {
         if ($request->method === 'POST') {
@@ -95,6 +101,12 @@ class EmployeeDean {
         return new View('site.dean.groups', ['groups' => $groups]);
     }
 
+    public function groupDetail(Request $request): string
+    {
+        $group = Group::with('students', 'disciplines')->find($request->get('id'));
+        return new View('site.dean.group_detail', ['group' => $group]);
+    }
+
     public function addGroup(Request $request): string
     {
         if ($request->method === 'POST') {
@@ -130,6 +142,13 @@ class EmployeeDean {
     {
         $disciplines = Discipline::all();
         return new View('site.dean.disciplines', ['disciplines' => $disciplines]);
+    }
+
+    public function disciplineDetail(Request $request): string
+    {
+        $discipline = Discipline::find($request->get('id'));
+        $discipline->load('groups');
+        return new View('site.dean.discipline_detail', ['discipline' => $discipline]);
     }
 
     public function addDiscipline(Request $request): string

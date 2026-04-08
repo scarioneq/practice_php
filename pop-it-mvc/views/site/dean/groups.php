@@ -13,11 +13,20 @@
     <?php foreach ($groups as $group): ?>
         <tr>
             <td style="padding: 10px;"><?= $group->id ?></td>
-            <td style="padding: 10px;"><?= htmlspecialchars($group->name) ?></td>
+            <td style="padding: 10px;">
+                <a href="<?= app()->route->getUrl('/group-detail') ?>?id=<?= $group->id ?>"
+                   style="color: navy; text-decoration: none; font-weight: bold;">
+                    <?= htmlspecialchars($group->name) ?>
+                </a>
+            </td>
             <td style="padding: 10px;">
                 <?= $group->students->count() ?>
             </td>
             <td style="padding: 10px;">
+                <a href="<?= app()->route->getUrl('/group-detail') ?>?id=<?= $group->id ?>"
+                   style="color: green; text-decoration: none; margin-right: 10px;">
+                    [ Просмотр ]
+                </a>
                 <a href="<?= app()->route->getUrl('/edit-group') ?>?id=<?= $group->id ?>"
                    style="color: blue; text-decoration: none; margin-right: 10px;">
                     [ Редактировать ]

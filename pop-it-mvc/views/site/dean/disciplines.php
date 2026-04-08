@@ -14,6 +14,10 @@
             <td style="padding: 10px;"><?= $discipline->id ?></td>
             <td style="padding: 10px;"><?= htmlspecialchars($discipline->name) ?></td>
             <td style="padding: 10px;">
+                <a href="<?= app()->route->getUrl('/discipline-detail') ?>?id=<?= $discipline->id ?>"
+                   style="color: green; text-decoration: none; margin-right: 10px;">
+                    [ Просмотр ]
+                </a>
                 <a href="<?= app()->route->getUrl('/edit-discipline') ?>?id=<?= $discipline->id ?>"
                    style="color: blue; text-decoration: none; margin-right: 10px;">
                     [ Редактировать ]

@@ -36,6 +36,10 @@
                 <?= $student->address ? htmlspecialchars($student->address->city) : '—' ?>
             </td>
             <td style="padding: 10px;">
+                <a href="<?= app()->route->getUrl('/student-disciplines') ?>?id=<?= $student->id ?>"
+                   style="color: green; text-decoration: none; margin-right: 10px;">
+                    [ Дисциплины ]
+                </a>
                 <a href="<?= app()->route->getUrl('/edit-student') ?>?id=<?= $student->id ?>"
                    style="color: blue; text-decoration: none; margin-right: 10px;">
                     [ Редактировать ]
