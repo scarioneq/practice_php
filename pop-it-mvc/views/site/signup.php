@@ -4,7 +4,9 @@
     <p style="color: #e74c3c; font-weight: bold;"><?= $message ?></p>
 <?php endif; ?>
 
-<form method="post" style="max-width: 400px; display: flex; flex-direction: column; gap: 15px;">
+<form method="post">
+    <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
+
     <label>Имя: <br>
         <input type="text" name="name" required style="width: 100%;">
     </label>
