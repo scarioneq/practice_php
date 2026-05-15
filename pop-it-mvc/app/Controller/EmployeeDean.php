@@ -4,11 +4,10 @@ namespace Controller;
 
 use Model\Address;
 use Model\Discipline;
+use Model\Grade;
 use Model\Group;
 use Model\Student;
 use Src\Request;
-use Model\User;
-use Src\Auth\Auth;
 use Src\View;
 
 class EmployeeDean {
@@ -22,6 +21,64 @@ class EmployeeDean {
     {
         $student = Student::with(['group'])->find($request->get('id'));
         return new View('site.dean.student_disciplines', ['student' => $student]);
+    }
+
+    public function studentGrades(Request $request): string
+    {
+        $student = Student::with(['group', 'grades.discipline'])->find($request->get('id'));
+        return new View('site.dean.student_grades', ['student' => $student]);
+    }
+
+    public function addGrade(Request $request): string
+    {
+        if ($request->method === 'POST') {
+            Grade::create([
+                'student_id' => $request->get('student_id'),
+                'discipline_id' => $request->get('discipline_id'),
+                'grade' => $request->get('grade'),
+            ]);
+            app()->route->redirect('/student-grades?id=' . $request->get('student_id'));
+        }
+
+        $student = Student::with('disciplines')->find($request->get('student_id'));
+        return new View('site.dean.add_grade', [
+            'student' => $student,
+            'disciplines' => $student->disciplines,
+        ]);
+    }
+
+    public function editGrade(Request $request): string
+    {
+        $grade = Grade::with('student', 'discipline')->find($request->get('id'));
+
+        if ($request->method === 'POST') {
+            $grade->update([
+                'grade' => $request->get('grade'),
+            ]);
+            app()->route->redirect('/student-grades?id=' . $grade->student_id);
+        }
+
+        $student = Student::with('disciplines')->find($grade->student_id);
+        return new View('site.dean.edit_grade', [
+            'grade' => $grade,
+            'disciplines' => $student->disciplines,
+        ]);
+    }
+
+    public function deleteGrade(Request $request): void
+    {
+        $grade = Grade::find($request->get('id'));
+        $studentId = $grade ? $grade->student_id : null;
+
+        if ($grade) {
+            $grade->delete();
+        }
+
+        if ($studentId) {
+            app()->route->redirect('/student-grades?id=' . $studentId);
+        } else {
+            app()->route->redirect('/students');
+        }
     }
 
     public function addStudent(Request $request): string
@@ -198,5 +255,17 @@ class EmployeeDean {
             'groups' => Group::all(),
             'disciplines' => Discipline::all()
         ]);
+    }
+
+    public function gradesByGroups(): string
+    {
+        $groups = Group::with('students.grades.discipline')->get();
+        return new View('site.dean.grades_by_groups', ['groups' => $groups]);
+    }
+
+    public function gradesByDisciplines(): string
+    {
+        $disciplines = Discipline::with('grades.student')->get();
+        return new View('site.dean.grades_by_disciplines', ['disciplines' => $disciplines]);
     }
 }

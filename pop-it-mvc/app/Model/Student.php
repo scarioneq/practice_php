@@ -9,21 +9,32 @@ class Student extends Model {
         'gender', 'date_of_birth', 'registration_address_id', 'group_of_students_id'
     ];
 
-    // Связь с группой
     public function group() {
         return $this->belongsTo(Group::class, 'group_of_students_id');
     }
 
-    // Связь с адресом
     public function address() {
         return $this->belongsTo(Address::class, 'registration_address_id');
     }
 
-    // Дисциплины студента (через его группу)
+    public function grades()
+    {
+        return $this->hasMany(Grade::class, 'student_id');
+    }
+
     public function getDisciplinesAttribute() {
         if (!$this->group_of_students_id || !$this->group) {
             return collect();
         }
         return $this->group->disciplines;
+    }
+    public function disciplines()
+    {
+        return $this->belongsToMany(
+            Discipline::class,
+            'grades',
+            'student_id',
+            'discipline_id'
+        )->withPivot('grade');
     }
 }

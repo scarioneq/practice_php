@@ -7,12 +7,15 @@ class Discipline extends Model {
     public $timestamps = false;
     protected $fillable = ['name'];
 
-    // Связь многие ко многим с группами
     public function groups() {
         return $this->belongsToMany(Group::class, 'group_disciplines', 'discipline_id', 'group_of_students_id');
     }
 
-    // Студенты, изучающие дисциплину (через группы)
+    public function grades()
+    {
+        return $this->hasMany(Grade::class, 'discipline_id');
+    }
+
     public function getStudentsAttribute() {
         $students = collect();
         foreach ($this->groups as $group) {

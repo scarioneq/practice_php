@@ -28,6 +28,12 @@
                 <a href="<?= app()->route->getUrl('/connect-group-discipline') ?>">🔗 Связать группу и дисциплину</a>
             </div>
 
+            <div style="border: 1px solid #ddd; padding: 16px; border-radius: 6px; background: #fafbfc;">
+                <h4 style="margin-top:0;">Успеваемость</h4>
+                <a href="<?= app()->route->getUrl('/grades-by-groups') ?>">📊 По группам</a><br>
+                <a href="<?= app()->route->getUrl('/grades-by-disciplines') ?>">📊 По дисциплинам</a>
+            </div>
+
         </div>
     </section>
 <?php else: ?>

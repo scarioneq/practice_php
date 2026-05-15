@@ -1,3 +1,4 @@
 .idea
-.env
+.env.example
 pop-it-mvc/vendor/
+.kilo

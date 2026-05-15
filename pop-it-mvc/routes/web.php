@@ -4,7 +4,7 @@ use Src\Auth\Auth;
 use Src\Route;
 
 Route::add('GET', '/', [Controller\Site::class, 'index'])
-    ->middleware('auth', 'authAdmin');
+    ->middleware('auth');
 Route::add(['GET', 'POST'], '/signup', [Controller\Site::class, 'signup']);
 Route::add(['GET', 'POST'], '/login', [Controller\Site::class, 'login']);
 Route::add('GET', '/logout', [Controller\Site::class, 'logout']);
@@ -16,6 +16,10 @@ Route::add('GET', '/users', [Controller\Admin::class, 'allUsers'])->middleware('
 Route::add(['GET', 'POST'], '/add-student', [Controller\EmployeeDean::class, 'addStudent'])->middleware('auth');
 Route::add('GET', '/students', [Controller\EmployeeDean::class, 'allStudents'])->middleware('auth');
 Route::add('GET', '/student-disciplines', [Controller\EmployeeDean::class, 'studentDisciplines'])->middleware('auth');
+Route::add('GET', '/student-grades', [Controller\EmployeeDean::class, 'studentGrades'])->middleware('auth');
+Route::add(['GET', 'POST'], '/add-grade', [Controller\EmployeeDean::class, 'addGrade'])->middleware('auth');
+Route::add(['GET', 'POST'], '/edit-grade', [Controller\EmployeeDean::class, 'editGrade'])->middleware('auth');
+Route::add('GET', '/delete-grade', [Controller\EmployeeDean::class, 'deleteGrade'])->middleware('auth');
 Route::add(['GET', 'POST'], '/edit-student', [Controller\EmployeeDean::class, 'editStudent'])->middleware('auth');
 Route::add('GET', '/delete-student', [Controller\EmployeeDean::class, 'deleteStudent'])->middleware('auth');
 
@@ -31,6 +35,8 @@ Route::add(['GET', 'POST'], '/add-discipline', [Controller\EmployeeDean::class, 
 Route::add(['GET', 'POST'], '/edit-discipline', [Controller\EmployeeDean::class, 'editDiscipline'])->middleware('auth');
 Route::add('GET', '/delete-discipline', [Controller\EmployeeDean::class, 'deleteDiscipline'])->middleware('auth');
 Route::add(['GET', 'POST'], '/connect-group-discipline', [Controller\EmployeeDean::class, 'connectGroupAndDiscipline'])->middleware('auth');
+Route::add('GET', '/grades-by-groups', [Controller\EmployeeDean::class, 'gradesByGroups'])->middleware('auth');
+Route::add('GET', '/grades-by-disciplines', [Controller\EmployeeDean::class, 'gradesByDisciplines'])->middleware('auth');
 
 
 

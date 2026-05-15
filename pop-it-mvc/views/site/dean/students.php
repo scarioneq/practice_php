@@ -25,10 +25,14 @@
             <td><?= date('d.m.Y', strtotime($student->date_of_birth)) ?></td>
             <td><?= $student->group ? htmlspecialchars($student->group->name) : '—' ?></td>
             <td><?= $student->address ? htmlspecialchars($student->address->city) : '—' ?></td>
-            <td>
+<td>
                 <a href="<?= app()->route->getUrl('/student-disciplines') ?>?id=<?= $student->id ?>"
                    style="color: #27ae60; margin-right: 10px;">
                     [ Дисциплины ]
+                </a>
+                <a href="<?= app()->route->getUrl('/student-grades') ?>?id=<?= $student->id ?>"
+                   style="color: #9b59b6; margin-right: 10px;">
+                    [ Успеваемость ]
                 </a>
                 <a href="<?= app()->route->getUrl('/edit-student') ?>?id=<?= $student->id ?>"
                    style="color: #2980b9; margin-right: 10px;">

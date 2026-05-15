@@ -2,7 +2,6 @@
 
 namespace Controller;
 
-use Model\Post;
 use Model\User;
 use Src\Auth\Auth;
 use Src\Request;
